@@ -7,7 +7,9 @@ const Wrapper = styled.li`
   list-style-type: none;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.05);
   border-radius: 20px;
-  padding: ${(p) => p.theme.space[4]}px;
+  font-size: ${(p) => p.theme.fontSizes[1]};
+  padding: ${(p) => p.theme.space[1]}px;
+  padding-left: ${(p) => p.theme.space[4]}px;
 `
 
 const Card = ({ children, ...props }) => (

@@ -13,14 +13,14 @@ import Typography from 'components/Typography'
 import Highlight from './Highlight'
 
 const EmptyImage = styled.div`
-  width: 100%;
-  height: 264px;
+  width: 0%;
+  height: 0%;
   background-color: ${(p) => p.theme.colors.main.light};
   border-radius: 10px;
 `
 
 const CustomCard = styled(Card)`
-  display: flex;
+  // display: flex;
 `
 
 const Grid = styled.div`
@@ -35,7 +35,7 @@ const HitKey = styled(Typography)`
 `
 
 const HitValue = styled.div`
-  grid-column: 2 / 4;
+  grid-column: 1 / 4;
   word-break: break-word;
 `
 
@@ -54,12 +54,12 @@ const Link = styled(BaseLink)`
   }
 `
 
-const Hr = styled.hr`
-  border-color: ${(p) => p.theme.colors.gray[10]};
-  background-color: ${(p) => p.theme.colors.gray[10]};
-  border-style: solid;
-  border-top: 0;
-`
+// const Hr = styled.hr`
+//   border-color: ${(p) => p.theme.colors.gray[10]};
+//   background-color: ${(p) => p.theme.colors.gray[10]};
+//   border-style: solid;
+//   border-top: 0;
+// `
 
 const isObject = (value) => {
   try {
@@ -183,7 +183,7 @@ const Hit = ({ hit, imageKey }) => {
   const documentProperties = Object.entries(hit._highlightResult)
   return (
     <CustomCard>
-      <Box width={240} mr={4} flexShrink={0}>
+      <Box width={0} mr={0} flexShrink={0}>
         {hit[imageKey] ? (
           <LazyLoadImage
             src={hit[imageKey] || null}
@@ -197,17 +197,14 @@ const Hit = ({ hit, imageKey }) => {
       <ContentContainer>
         {documentProperties
           .slice(0, displayMore ? hit.length : 6)
+          .filter((t) => t[0] !== 'id' && t[0] !== 'tags')
           .map(([key, value]) => (
             <div key={key}>
               <Grid>
-                <HitKey variant="typo10" color="gray.6">
-                  {key}
-                </HitKey>
                 <HitValue>
                   <FieldValue value={value} hit={hit} objectKey={key} />
                 </HitValue>
               </Grid>
-              <Hr />
             </div>
           ))}
         {documentProperties.length > 6 && !displayMore && (
