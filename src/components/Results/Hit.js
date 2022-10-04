@@ -197,7 +197,7 @@ const Hit = ({ hit, imageKey }) => {
       <ContentContainer>
         {documentProperties
           .slice(0, displayMore ? hit.length : 6)
-          .filter((t) => t[0] !== 'id' && t[0] !== 'tags')
+          .filter((t) => !['id', 'tags', '_formatted'].includes(t[0]))
           .map(([key, value]) => (
             <div key={key}>
               <Grid>
