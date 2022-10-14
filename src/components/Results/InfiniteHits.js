@@ -14,7 +14,7 @@ const HitsList = styled.ul`
   padding: 0;
   margin: 0;
   > li + li {
-    margin-top: 16px;
+    margin-top: 10px;
   }
 `
 
